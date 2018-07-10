@@ -9,7 +9,7 @@ data = json.dumps({'name': 'justin'})
 
 
 def http_get():
-    req = urllib2.Request(demo_url)
+    req = urllib2.Request(demo_url + '?key=jack')
     res = urllib2.urlopen(req)
     print res.read()
 
