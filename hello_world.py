@@ -7,6 +7,7 @@ from flask import render_template
 from flask import make_response
 from flask import session, url_for, escape, redirect
 from werkzeug.utils import secure_filename
+from flaskr import create_app
 
 # set env to develop
 os.environ.setdefault('FLASK_ENV', 'development')
@@ -18,6 +19,7 @@ app.secret_key = b'_5#y2L"F4Q8z\n\xec]/'
 
 @app.route('/')
 def index():
+    app.logger.debug('access index')
     if 'username' in session:
         return 'hello world'
     else:
@@ -92,4 +94,6 @@ def logout():
     return redirect(url_for('index'))
 
 if __name__ == '__main__':
+    #myapp = create_app()
+    #myapp.run()
     app.run(host='0.0.0.0')
