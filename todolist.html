@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>todolist-prime</title>
+    <style type="text/css">
+        
+    li {
+        position: relative;
+        margin-bottom: 10px;
+        border-radius: 5px;
+        padding: 0 10px;
+        height: 32px;
+        box-shadow: 0 1px 0 black;
+        line-height: 32px;
+        background-color: burlywood;
+        list-style: none;
+    }
+    ol li input {
+        position: absolute;
+        top: 4px;
+        left: 10px;
+        width: 20px;
+        height: 20px;
+        cursor: pointer;
+    }
+    p{
+        margin: 0;
+    }
+    ol li p {
+        display: inline;
+        margin-left: 35px;
+    }
+     
+    ol li p input{
+        top: 5px;
+        margin-left: 35px;
+        width: 70%;
+        height: 14px;
+        font-size: 14px;
+        line-height: 14px;
+    }
+     
+    ol li a {
+        position: absolute;
+        top: 8px;
+        right: 10px;
+        display: inline-block;
+        border: 1px;
+        border-radius: 50%;
+        width: 16px;
+        height: 16px;
+        font-size: 32px;
+        line-height: 10px;
+        color: red;
+        font-weight: bolder;
+        cursor: pointer;
+        background-color: gray;
+    }
+    </style>
+</head>
+<body>
+ 
+    <header>
+        <section>
+            <label for="add_list">My todolist</label>
+            <input type="text" id="add_list" name="add_list" placeholder="type here" required>
+        </section>
+    </header>
+ 
+    <div class="content">
+        <h1>未完成<span id="todocount"></span></h1>
+        <ol id="todolist">
+            <li>
+                <input type="checkbox" onchange="sing()"><p onclick="sing()">hello</p><a onclick="sing()">x</a></input>
+            </li>
+        </ol>
+ 
+        <h1>已完成<span id="donecount"></span></h1>
+        <ol id="donelist">
+        </ol>
+    </div>
+ 
+    <div id="clear">
+    	<button id="clearbutton"><h3>全部清除</h3></button>
+    </div>
+    <script type="text/javascript">
+        function AddTodoName(e) {
+            todo_obj = {
+                "name": "",
+                "done": false
+            };
+            temp_value = document.getElementById("add_list").value;
+            temp_value = temp_value.trim();
+            if (temp_value.length() === 0) {
+                alert("Value can not be null");
+            }
+            todo_obj["name"] = temp_value;
+            todolist.push(todo_obj);
+
+            SaveData(todolist);
+            load();
+            document.getElementById("add_list").value = "";
+            document.getElementById("add_list").focus();
+        };
+        function sing() {
+            alert("yes");
+        };
+    </script>
+</body>
+</html>
