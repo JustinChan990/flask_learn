@@ -106,6 +106,44 @@
         function sing() {
             alert("yes");
         };
+                function load(){
+            var todo = document.getElementById("todolist"),
+                done = document.getElementById("donelist"),
+                todocount = document.getElementById("todocount"),
+                donecount = document.getElementById("donecount"),
+                todoString = "",
+                doneString = "",
+                todoCount = 0,
+                doneCount = 0;
+
+            document.getElementById("add_list").focus();
+            todolist = loadData();
+
+            if (todolist != null) {
+                for (var i = 0; i <= todolist.length; i++) {
+                    if (!todolist[i].done) {
+                        todoString += "<li> <input type=\"checkbox\" onchange=\"update(" + i + ", \"done\")\"><p onclick=\"edit()\">" + todolist[i].todo + "</p><a onclick=\"delete(" + i + ")\">x</a> </li>"
+                        todoCount++;
+                    };
+                    else {
+                        doneString += "<li> <input type=\"checkbox\" onchange=\"update(" + i + ", \"done\")\"><p onclick=\"edit()\">" + todolist[i].todo + "</p><a onclick=\"delete(" + i + ")\">x</a> </li>"
+                        doneCount++;
+                    };
+
+                };
+                todo.innerHTML = todoString;
+                done.innerHTML = doneString;
+                todocount.innerHTML = todoCount;
+                donecount.innerHTML = doneCount;
+            }
+            else {
+                todo.innerHTML = "";
+                done.innerHTML = "";
+                todocount.innerHTML = 0;
+                donecount.innerHTML = 0;
+            }
+
+        }
     </script>
 </body>
 </html>
